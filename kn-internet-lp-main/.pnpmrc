@@ -1,0 +1,7 @@
+# pnpm configuration for optimal builds
+shamefully-hoist=true
+strict-peer-dependencies=false
+node-linker=node-modules
+
+# Allow all build scripts (required for sharp native compilation)
+allow-scripts=allow

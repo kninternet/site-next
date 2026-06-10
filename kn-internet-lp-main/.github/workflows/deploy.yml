@@ -1,0 +1,81 @@
+name: Deploy to Hostinger
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Deploy to Hostinger
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          set -e
+
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          echo "🔑 Configurando SSH key..."
+          echo "$DEPLOY_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          if [ ! -s ~/.ssh/deploy_key ]; then
+            echo "❌ SSH key vazia! Verifique o secret DEPLOY_KEY."
+            exit 1
+          fi
+
+          echo "✓ SSH key configurada"
+
+          echo "🔗 Adicionando host key..."
+          ssh-keyscan -t ed25519,rsa -p "$DEPLOY_PORT" "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+
+          echo "✓ Testando SSH..."
+          ssh -i ~/.ssh/deploy_key \
+              -p "$DEPLOY_PORT" \
+              -o StrictHostKeyChecking=accept-new \
+              "$DEPLOY_USER@$DEPLOY_HOST" "hostname"
+
+          echo "✓ SSH funcionando!"
+
+          echo "📁 Criando diretório remoto..."
+          ssh -i ~/.ssh/deploy_key -p "$DEPLOY_PORT" -o StrictHostKeyChecking=accept-new \
+              "$DEPLOY_USER@$DEPLOY_HOST" "mkdir -p '$DEPLOY_PATH'"
+
+          SSH_OPTS="-i ~/.ssh/deploy_key -p $DEPLOY_PORT -o StrictHostKeyChecking=accept-new"
+
+          echo "📤 Enviando arquivos..."
+          rsync -avz --delete -e "ssh $SSH_OPTS" .next/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/.next/" || true
+          rsync -avz --delete -e "ssh $SSH_OPTS" public/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/public/" || true
+          rsync -avz -e "ssh $SSH_OPTS" package.json pnpm-lock.yaml "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/"
+
+          echo "🚀 Reiniciando aplicação..."
+          ssh -i ~/.ssh/deploy_key -p "$DEPLOY_PORT" -o StrictHostKeyChecking=accept-new \
+              "$DEPLOY_USER@$DEPLOY_HOST" \
+              "cd '$DEPLOY_PATH' && pnpm install --frozen-lockfile --production=false && pm2 restart kn-internet || pm2 start ecosystem.config.js --env production"
+
+          echo "✅ Deploy concluído!"
