@@ -32,11 +32,11 @@ export const metadata: Metadata = {
   ],
   icons: {
   icon: [
-    { url: '/favicon.ico', sizes: '48x48' },
-    { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
-    { url: '/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+    { url: '/site/favicon.ico', sizes: '48x48' },
+    { url: '/site/icon-32x32.png', sizes: '32x32', type: 'image/png' },
+    { url: '/site/icon-512x512.png', sizes: '512x512', type: 'image/png' },
   ],
-  apple: '/apple-icon.png',
+  apple: '/site/apple-icon.png',
 },
   openGraph: {
     title: 'KN Internet | Fibra Óptica no RJ',

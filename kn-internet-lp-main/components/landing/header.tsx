@@ -38,7 +38,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/logo_kn_internet.webp"
+              src="/site/images/logo_kn_internet.webp"
               alt="KN Internet"
               width={200}
               height={67}
