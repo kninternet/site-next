@@ -7,15 +7,15 @@ import { Menu, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 const navItems = [
-  { href: '/cobertura',   label: 'Cobertura' },
-  { href: '/planos',      label: 'Planos' },
-  { href: '/quem-somos',  label: 'Quem somos' },
-  { href: '/faq',         label: 'Ajuda' },
-  { href: '/contato',     label: 'Contato' },
+  { href: '/cobertura', label: 'Cobertura' },
+  { href: '/planos', label: 'Planos' },
+  { href: '/quem-somos', label: 'Quem somos' },
+  { href: '/faq', label: 'Ajuda' },
+  { href: '/contato', label: 'Contato' },
 ]
 
 export function Header() {
-  const [open, setOpen]         = useState(false)
+  const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -26,11 +26,10 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
           ? 'bg-white/95 backdrop-blur-lg shadow-[0_1px_0_rgba(0,0,0,0.06)]'
           : 'bg-white'
-      }`}
+        }`}
     >
       <div className="container mx-auto px-5">
         <nav className="flex items-center justify-between h-[72px]">
@@ -38,7 +37,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/site/images/logo_kn_internet.webp"
+              src="/images/logo_kn_internet.webp"
               alt="KN Internet"
               width={200}
               height={67}

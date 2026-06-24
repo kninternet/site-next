@@ -31,13 +31,13 @@ export const metadata: Metadata = {
     'internet Duque de Caxias',
   ],
   icons: {
-  icon: [
-    { url: '/site/favicon.ico', sizes: '48x48' },
-    { url: '/site/icon-32x32.png', sizes: '32x32', type: 'image/png' },
-    { url: '/site/icon-512x512.png', sizes: '512x512', type: 'image/png' },
-  ],
-  apple: '/site/apple-icon.png',
-},
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     title: 'KN Internet | Fibra Óptica no RJ',
     description: 'Internet fibra óptica com instalação rápida e suporte local. Consulte a cobertura no seu bairro.',
