@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Sora } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { Header } from '@/components/landing/header'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,15 +17,18 @@ const sora = Sora({
 })
 
 export const metadata: Metadata = {
-  title: 'KN Internet | Fibra Óptica Rápida e Estável no RJ',
+  title: 'KN Internet | Fibra Óptica Rápida no RJ',
   description:
-    'Planos de internet fibra óptica a partir de R$120/mês. Instalação rápida, suporte local e atendimento humanizado no Rio de Janeiro.',
+    'Internet fibra óptica com instalação rápida, suporte local e atendimento de verdade. Consulte a cobertura no seu bairro.',
   keywords: [
     'internet fibra',
     'fibra óptica',
     'provedor internet RJ',
     'KN Internet',
     'internet Rio de Janeiro',
+    'internet São Gonçalo',
+    'internet Queimados',
+    'internet Duque de Caxias',
   ],
   icons: {
     icon: [
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'KN Internet | Fibra Óptica no RJ',
-    description: 'Internet fibra óptica a partir de R$120/mês. Suporte local, instalação rápida.',
+    description: 'Internet fibra óptica com instalação rápida e suporte local. Consulte a cobertura no seu bairro.',
     locale: 'pt_BR',
     type: 'website',
   },
@@ -55,8 +58,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth bg-white">
       <body className={`${inter.variable} ${sora.variable} font-sans antialiased`}>
+        <Header />
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
