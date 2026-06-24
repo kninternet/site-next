@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
@@ -27,8 +26,8 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? 'bg-white/95 backdrop-blur-lg shadow-[0_1px_0_rgba(0,0,0,0.06)]'
-          : 'bg-white'
+        ? 'bg-white/95 backdrop-blur-lg shadow-[0_1px_0_rgba(0,0,0,0.06)]'
+        : 'bg-white'
         }`}
     >
       <div className="container mx-auto px-5">
@@ -36,13 +35,10 @@ export function Header() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image
+            <img
               src="/images/logo_kn_internet.png"
               alt="KN Internet"
-              width={200}
-              height={67}
               className="h-14 w-auto object-contain"
-              priority
             />
           </Link>
 
