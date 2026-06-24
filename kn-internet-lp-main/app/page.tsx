@@ -30,7 +30,7 @@ export default function Home() {
     <main className="bg-white">
 
       {/* ── Hero ────────────────────────────────────────────────────────── */}
-      <section className="min-h-[92vh] flex items-center pt-20 pb-16">
+      <section className="pt-28 pb-8 md:pt-36 md:pb-12">
         <div className="container mx-auto px-5 max-w-4xl">
           <div className="text-center">
 
@@ -93,7 +93,7 @@ export default function Home() {
       </section>
 
       {/* ── Diferenciais ─────────────────────────────────────────────────── */}
-      <section className="py-20 bg-gray-50/60">
+      <section className="py-12 md:py-20 bg-gray-50/60">
         <div className="container mx-auto px-5 max-w-5xl">
 
           <div className="text-center mb-14">
@@ -109,8 +109,8 @@ export default function Home() {
             {diferenciais.map((d) => (
               <div
                 key={d.titulo}
-                className="bg-white rounded-2xl p-6 border border-gray-100
-                           hover:border-kn-orange/30 hover:shadow-md transition-all group"
+                className="bg-white rounded-2xl p-6 border border-gray-200
+           hover:border-kn-orange/30 hover:shadow-md transition-all group shadow-sm"
               >
                 <div className="w-11 h-11 rounded-xl bg-kn-blue/6 flex items-center
                                 justify-center mb-4 group-hover:bg-kn-orange/10 transition-colors">
