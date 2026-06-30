@@ -1,6 +1,6 @@
 // lib/coverage-data.ts
 // Fonte única de verdade — cobertura, planos, slugs e mapeamento SGP
-// Atualizado em 28/06/2026 — dados validados contra SGP e formulário de cadastro
+// Atualizado em 29/06/2026 — alinhado com lib/data.ts (pré-cadastro) e SGP
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -72,9 +72,9 @@ const planosSaoGoncalo: Plano[] = [
   },
 ]
 
-const planosCajuSantoCristo: Plano[] = [
+const planosCaju: Plano[] = [
   {
-    id: 'rj-cs-350',
+    id: 'rj-caju-350',
     nome: '350 Mega',
     velocidade: 350,
     preco: 120.00,
@@ -82,7 +82,7 @@ const planosCajuSantoCristo: Plano[] = [
     recursos: ['Download até 350 Mbps', 'Upload até 150 Mbps', 'Wi-Fi incluso', 'Suporte local'],
   },
   {
-    id: 'rj-cs-450',
+    id: 'rj-caju-450',
     nome: '450 Mega',
     velocidade: 450,
     preco: 150.00,
@@ -90,7 +90,7 @@ const planosCajuSantoCristo: Plano[] = [
     recursos: ['Download até 450 Mbps', 'Upload até 270 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
   },
   {
-    id: 'rj-cs-600',
+    id: 'rj-caju-600',
     nome: '600 Mega',
     velocidade: 600,
     preco: 180.00,
@@ -98,12 +98,47 @@ const planosCajuSantoCristo: Plano[] = [
     recursos: ['Download até 600 Mbps', 'Upload até 300 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
   },
   {
-    id: 'rj-cs-800',
+    id: 'rj-caju-800',
     nome: '800 Mega',
     velocidade: 800,
     preco: 200.00,
     destaque: false,
     recursos: ['Download até 800 Mbps', 'Upload até 400 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
+  },
+]
+
+const planosSantoCristo: Plano[] = [
+  {
+    id: 'rj-sc-50',
+    nome: '50 Mega',
+    velocidade: 50,
+    preco: 100.00,
+    destaque: false,
+    recursos: ['Download até 50 Mbps', 'Upload até 25 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+  },
+  {
+    id: 'rj-sc-100',
+    nome: '100 Mega',
+    velocidade: 100,
+    preco: 150.00,
+    destaque: false,
+    recursos: ['Download até 100 Mbps', 'Upload até 50 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+  },
+  {
+    id: 'rj-sc-150',
+    nome: '150 Mega',
+    velocidade: 150,
+    preco: 200.00,
+    destaque: true,
+    recursos: ['Download até 150 Mbps', 'Upload até 75 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+  },
+  {
+    id: 'rj-sc-200',
+    nome: '200 Mega',
+    velocidade: 200,
+    preco: 250.00,
+    destaque: false,
+    recursos: ['Download até 200 Mbps', 'Upload até 100 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
   },
 ]
 
@@ -203,7 +238,7 @@ const planosDuqueDeCaxias: Plano[] = [
     velocidade: 400,
     preco: 120.00,
     destaque: false,
-    recursos: ['Download até 400 Mbps', 'Upload até 200 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+    recursos: ['Download até 400 Mbps', 'Upload até 220 Mbps', 'Wi-Fi incluso', 'Suporte local'],
   },
   {
     id: 'dc-500',
@@ -239,8 +274,40 @@ export const CIDADES: Cidade[] = [
     slug: 'sao-goncalo',
     bairros: [
       {
-        nome: 'São Gonçalo',
-        slug: 'sao-goncalo',
+        nome: 'Santa Catarina',
+        slug: 'santa-catarina',
+        popId: 1,
+        portadorId: 32,
+        nasId: NAS_PADRAO,
+        planos: planosSaoGoncalo,
+      },
+      {
+        nome: 'Barro Vermelho',
+        slug: 'barro-vermelho',
+        popId: 1,
+        portadorId: 32,
+        nasId: NAS_PADRAO,
+        planos: planosSaoGoncalo,
+      },
+      {
+        nome: 'Sete Pontes',
+        slug: 'sete-pontes',
+        popId: 1,
+        portadorId: 32,
+        nasId: NAS_PADRAO,
+        planos: planosSaoGoncalo,
+      },
+      {
+        nome: 'Covanca',
+        slug: 'covanca',
+        popId: 1,
+        portadorId: 32,
+        nasId: NAS_PADRAO,
+        planos: planosSaoGoncalo,
+      },
+      {
+        nome: 'Pita',
+        slug: 'pita',
         popId: 1,
         portadorId: 32,
         nasId: NAS_PADRAO,
@@ -255,10 +322,10 @@ export const CIDADES: Cidade[] = [
       {
         nome: 'Caju',
         slug: 'caju',
-        popId: 33,
+        popId: 31,
         portadorId: 30,
         nasId: NAS_PADRAO,
-        planos: planosCajuSantoCristo,
+        planos: planosCaju,
       },
       {
         nome: 'Santo Cristo',
@@ -266,12 +333,12 @@ export const CIDADES: Cidade[] = [
         popId: 31,
         portadorId: 30,
         nasId: NAS_PADRAO,
-        planos: planosCajuSantoCristo,
+        planos: planosSantoCristo,
       },
       {
         nome: 'Cavalcante',
         slug: 'cavalcante',
-        popId: 33,
+        popId: 31,
         portadorId: 30,
         nasId: NAS_PADRAO,
         planos: planosCavalcante,
@@ -279,7 +346,7 @@ export const CIDADES: Cidade[] = [
       {
         nome: 'Vila Santa Clara (Taquara)',
         slug: 'vila-santa-clara',
-        popId: 34,
+        popId: 31,
         portadorId: 30,
         nasId: NAS_PADRAO,
         planos: planosVilaSantaClara,
@@ -304,6 +371,22 @@ export const CIDADES: Cidade[] = [
     nome: 'Duque de Caxias',
     slug: 'duque-de-caxias',
     bairros: [
+      {
+        nome: 'Cangulo',
+        slug: 'cangulo',
+        popId: 38,
+        portadorId: 33,
+        nasId: NAS_PADRAO,
+        planos: planosDuqueDeCaxias,
+      },
+      {
+        nome: 'Jardim Rosário',
+        slug: 'jardim-rosario',
+        popId: 38,
+        portadorId: 33,
+        nasId: NAS_PADRAO,
+        planos: planosDuqueDeCaxias,
+      },
       {
         nome: 'Saracuruna',
         slug: 'saracuruna',
