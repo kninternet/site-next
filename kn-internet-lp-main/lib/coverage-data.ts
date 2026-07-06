@@ -1,6 +1,7 @@
 // lib/coverage-data.ts
 // Fonte única de verdade — cobertura, planos, slugs e mapeamento SGP
-// Atualizado em 29/06/2026 — alinhado com lib/data.ts (pré-cadastro) e SGP
+// Atualizado em 06/07/2026 — adiciona planoSgpId (id numérico canônico do SGP)
+// alinhado com o PLANO_MAP de lib/data.ts (pré-cadastro)
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -13,6 +14,7 @@ export interface Plano {
   preco: number             // R$
   destaque: boolean
   recursos: string[]
+  planoSgpId: number        // id numérico canônico do plano no SGP (usar este para criar contratos — nunca o slug `id`)
 }
 
 export interface Bairro {
@@ -45,6 +47,7 @@ const planosSaoGoncalo: Plano[] = [
     preco: 120.00,
     destaque: false,
     recursos: ['Download até 350 Mbps', 'Upload até 150 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+    planoSgpId: 7,
   },
   {
     id: 'sg-450',
@@ -53,6 +56,7 @@ const planosSaoGoncalo: Plano[] = [
     preco: 150.00,
     destaque: true,
     recursos: ['Download até 450 Mbps', 'Upload até 270 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 8,
   },
   {
     id: 'sg-600',
@@ -61,6 +65,7 @@ const planosSaoGoncalo: Plano[] = [
     preco: 180.00,
     destaque: false,
     recursos: ['Download até 600 Mbps', 'Upload até 300 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 9,
   },
   {
     id: 'sg-800',
@@ -69,6 +74,7 @@ const planosSaoGoncalo: Plano[] = [
     preco: 200.00,
     destaque: false,
     recursos: ['Download até 800 Mbps', 'Upload até 400 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
+    planoSgpId: 1238,
   },
 ]
 
@@ -80,6 +86,7 @@ const planosCaju: Plano[] = [
     preco: 120.00,
     destaque: false,
     recursos: ['Download até 350 Mbps', 'Upload até 150 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+    planoSgpId: 1239,
   },
   {
     id: 'rj-caju-450',
@@ -88,6 +95,7 @@ const planosCaju: Plano[] = [
     preco: 150.00,
     destaque: true,
     recursos: ['Download até 450 Mbps', 'Upload até 270 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 1240,
   },
   {
     id: 'rj-caju-600',
@@ -96,6 +104,7 @@ const planosCaju: Plano[] = [
     preco: 180.00,
     destaque: false,
     recursos: ['Download até 600 Mbps', 'Upload até 300 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 1241,
   },
   {
     id: 'rj-caju-800',
@@ -104,6 +113,7 @@ const planosCaju: Plano[] = [
     preco: 200.00,
     destaque: false,
     recursos: ['Download até 800 Mbps', 'Upload até 400 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
+    planoSgpId: 1242,
   },
 ]
 
@@ -115,6 +125,7 @@ const planosSantoCristo: Plano[] = [
     preco: 100.00,
     destaque: false,
     recursos: ['Download até 50 Mbps', 'Upload até 25 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+    planoSgpId: 193,
   },
   {
     id: 'rj-sc-100',
@@ -123,6 +134,7 @@ const planosSantoCristo: Plano[] = [
     preco: 150.00,
     destaque: false,
     recursos: ['Download até 100 Mbps', 'Upload até 50 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+    planoSgpId: 194,
   },
   {
     id: 'rj-sc-150',
@@ -131,6 +143,7 @@ const planosSantoCristo: Plano[] = [
     preco: 200.00,
     destaque: true,
     recursos: ['Download até 150 Mbps', 'Upload até 75 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 195,
   },
   {
     id: 'rj-sc-200',
@@ -139,6 +152,7 @@ const planosSantoCristo: Plano[] = [
     preco: 250.00,
     destaque: false,
     recursos: ['Download até 200 Mbps', 'Upload até 100 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
+    planoSgpId: 196,
   },
 ]
 
@@ -150,6 +164,7 @@ const planosCavalcante: Plano[] = [
     preco: 59.90,
     destaque: false,
     recursos: ['Download até 200 Mbps', 'Upload até 100 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+    planoSgpId: 209,
   },
   {
     id: 'rj-cav-400',
@@ -158,6 +173,7 @@ const planosCavalcante: Plano[] = [
     preco: 69.90,
     destaque: true,
     recursos: ['Download até 400 Mbps', 'Upload até 200 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 210,
   },
   {
     id: 'rj-cav-600',
@@ -166,6 +182,7 @@ const planosCavalcante: Plano[] = [
     preco: 94.90,
     destaque: false,
     recursos: ['Download até 600 Mbps', 'Upload até 300 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 211,
   },
 ]
 
@@ -177,6 +194,7 @@ const planosVilaSantaClara: Plano[] = [
     preco: 79.90,
     destaque: false,
     recursos: ['Download até 100 Mbps', 'Upload até 50 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+    planoSgpId: 212,
   },
   {
     id: 'rj-vsc-500',
@@ -185,6 +203,7 @@ const planosVilaSantaClara: Plano[] = [
     preco: 99.90,
     destaque: true,
     recursos: ['Download até 500 Mbps', 'Upload até 250 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 213,
   },
   {
     id: 'rj-vsc-800',
@@ -193,6 +212,7 @@ const planosVilaSantaClara: Plano[] = [
     preco: 149.90,
     destaque: false,
     recursos: ['Download até 800 Mbps', 'Upload até 400 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
+    planoSgpId: 214,
   },
 ]
 
@@ -204,6 +224,7 @@ const planosQueimados: Plano[] = [
     preco: 100.00,
     destaque: false,
     recursos: ['Download até 300 Mbps', 'Upload até 150 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+    planoSgpId: 1243,
   },
   {
     id: 'que-500',
@@ -212,6 +233,7 @@ const planosQueimados: Plano[] = [
     preco: 120.00,
     destaque: true,
     recursos: ['Download até 500 Mbps', 'Upload até 250 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 1244,
   },
   {
     id: 'que-600',
@@ -220,6 +242,7 @@ const planosQueimados: Plano[] = [
     preco: 150.00,
     destaque: false,
     recursos: ['Download até 600 Mbps', 'Upload até 300 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 1245,
   },
   {
     id: 'que-800',
@@ -228,6 +251,7 @@ const planosQueimados: Plano[] = [
     preco: 180.00,
     destaque: false,
     recursos: ['Download até 800 Mbps', 'Upload até 400 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
+    planoSgpId: 1246,
   },
 ]
 
@@ -239,6 +263,7 @@ const planosDuqueDeCaxias: Plano[] = [
     preco: 120.00,
     destaque: false,
     recursos: ['Download até 400 Mbps', 'Upload até 220 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+    planoSgpId: 228,
   },
   {
     id: 'dc-500',
@@ -247,6 +272,7 @@ const planosDuqueDeCaxias: Plano[] = [
     preco: 150.00,
     destaque: true,
     recursos: ['Download até 500 Mbps', 'Upload até 250 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 229,
   },
   {
     id: 'dc-600',
@@ -255,6 +281,7 @@ const planosDuqueDeCaxias: Plano[] = [
     preco: 170.00,
     destaque: false,
     recursos: ['Download até 600 Mbps', 'Upload até 300 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 230,
   },
   {
     id: 'dc-800',
@@ -263,6 +290,7 @@ const planosDuqueDeCaxias: Plano[] = [
     preco: 200.00,
     destaque: false,
     recursos: ['Download até 800 Mbps', 'Upload até 400 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
+    planoSgpId: 231,
   },
 ]
 
