@@ -26,10 +26,10 @@
   --radius: 0.75rem;
 
   /* KN Brand */
-  --kn-blue: #0c1e3d;
-  --kn-blue-mid: #16305e;
-  --kn-orange: #f97316;
-  --kn-orange-dark: #ea6c0a;
+  --kn-blue: #063260;
+  --kn-blue-mid: #0d4a86;
+  --kn-orange: #fa6900;
+  --kn-orange-dark: #e05f00;
 
   /* Tailwind theme bridge */
   --color-kn-blue: var(--kn-blue);

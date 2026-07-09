@@ -3,22 +3,23 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Menu, X, Wifi } from 'lucide-react'
+import { Menu, X, MapPin, ChevronRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 const navItems = [
-  { href: '#planos',    label: 'Planos' },
-  { href: '#beneficios', label: 'Benefícios' },
-  { href: '#app',       label: 'App' },
-  { href: '#contato',   label: 'Contato' },
+  { href: '/cobertura', label: 'Cobertura' },
+  { href: '/#diferenciais', label: 'Diferenciais' },
+  { href: '/#como-funciona', label: 'Como funciona' },
+  { href: '/#autoatendimento', label: 'Suporte' },
 ]
 
 export function Header() {
-  const [open, setOpen]       = useState(false)
+  const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -27,35 +28,31 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-lg shadow-[0_1px_0_rgba(0,0,0,0.06)]'
-          : 'bg-transparent'
+          ? 'bg-white/85 backdrop-blur-xl border-b border-kn-blue/8'
+          : 'bg-white/60 backdrop-blur-md border-b border-transparent'
       }`}
     >
-      <div className="container mx-auto px-5">
-        <nav className="flex items-center justify-between h-[72px]">
-
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <nav className="flex items-center justify-between h-16 lg:h-[72px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-
+          <Link href="/" className="flex items-center shrink-0" aria-label="KN Internet — início">
             <Image
-              src="/images/knnet.png"
+              src="/images/kn-logo.png"
               alt="KN Internet"
-              width={110}
-              height={40}
-              className="h-12 w-auto object-contain"
+              width={132}
+              height={44}
+              className="h-9 lg:h-10 w-auto object-contain"
               priority
             />
           </Link>
 
           {/* Desktop nav */}
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-sm font-medium text-kn-blue/65 hover:text-kn-blue transition-colors
-                             relative after:absolute after:-bottom-0.5 after:left-0 after:w-0 after:h-[2px]
-                             after:bg-kn-orange after:rounded-full after:transition-all hover:after:w-full"
+                  className="px-3.5 py-2 rounded-lg text-sm font-medium text-kn-blue/70 hover:text-kn-blue hover:bg-kn-blue/5 transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -63,54 +60,74 @@ export function Header() {
             ))}
           </ul>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Desktop actions */}
+          <div className="hidden lg:flex items-center gap-2">
             <Button
               asChild
-              className="bg-kn-orange hover:bg-kn-orange/90 text-white font-semibold
-                         shadow-lg shadow-kn-orange/25 hover:shadow-kn-orange/40
-                         hover:scale-105 transition-all rounded-xl"
+              variant="ghost"
+              className="text-kn-blue/75 hover:text-kn-blue hover:bg-kn-blue/5 font-medium rounded-lg"
             >
-              <a href="https://wa.me/5521967797580" target="_blank" rel="noopener noreferrer">
-                Fale Conosco
-              </a>
+              <Link href="/#autoatendimento">Central do Assinante</Link>
+            </Button>
+            <Button
+              asChild
+              className="bg-kn-orange hover:bg-kn-orange-dark text-white font-semibold rounded-lg shadow-sm shadow-kn-orange/20 transition-colors"
+            >
+              <Link href="/cobertura">
+                <MapPin className="w-4 h-4" />
+                Verificar cobertura
+              </Link>
             </Button>
           </div>
 
-          {/* Hamburger */}
+          {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 text-kn-blue"
+            className="lg:hidden p-2 -mr-2 text-kn-blue rounded-lg hover:bg-kn-blue/5 transition-colors"
             onClick={() => setOpen(!open)}
-            aria-label="Abrir menu"
+            aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={open}
           >
-            {open ? <X size={24} /> : <Menu size={24} />}
+            {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </nav>
 
         {/* Mobile menu */}
         {open && (
-          <div className="md:hidden pb-5 animate-slide-up">
-            <ul className="flex flex-col gap-4 mb-5">
+          <div className="lg:hidden pb-5 pt-1 animate-slide-up">
+            <ul className="flex flex-col gap-1 mb-4">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="block py-1.5 text-sm font-medium text-kn-blue/70 hover:text-kn-blue transition-colors"
+                    className="flex items-center justify-between py-2.5 px-3 rounded-xl text-[15px] font-medium text-kn-blue/80 hover:text-kn-blue hover:bg-kn-blue/5 transition-colors"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}
+                    <ChevronRight className="w-4 h-4 text-kn-blue/30" />
                   </Link>
                 </li>
               ))}
             </ul>
-            <Button
-              asChild
-              className="w-full bg-kn-orange hover:bg-kn-orange/90 text-white font-semibold rounded-xl"
-            >
-              <a href="https://wa.me/5521967797580" target="_blank" rel="noopener noreferrer">
-                Fale Conosco
-              </a>
-            </Button>
+            <div className="flex flex-col gap-2">
+              <Button
+                asChild
+                variant="outline"
+                className="w-full rounded-xl border-kn-blue/15 text-kn-blue font-medium"
+                onClick={() => setOpen(false)}
+              >
+                <Link href="/#autoatendimento">Central do Assinante</Link>
+              </Button>
+              <Button
+                asChild
+                className="w-full bg-kn-orange hover:bg-kn-orange-dark text-white font-semibold rounded-xl"
+                onClick={() => setOpen(false)}
+              >
+                <Link href="/cobertura">
+                  <MapPin className="w-4 h-4" />
+                  Verificar cobertura
+                </Link>
+              </Button>
+            </div>
           </div>
         )}
       </div>
