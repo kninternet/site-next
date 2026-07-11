@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 
 const faqs = [
   {
@@ -40,30 +41,33 @@ export function FAQ() {
   return (
     <section id="faq" className="scroll-mt-24 bg-kn-blue/[0.02] py-20 lg:py-28">
       <div className="mx-auto max-w-3xl px-5 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-balance font-display text-3xl font-extrabold tracking-tight text-kn-blue sm:text-4xl">
             Perguntas frequentes
           </h2>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-kn-blue/60">
             Tudo o que você precisa saber antes de contratar.
           </p>
-        </div>
+        </Reveal>
 
-        <Accordion type="single" collapsible className="mt-12 flex flex-col gap-3">
-          {faqs.map((faq, i) => (
-            <AccordionItem
-              key={i}
-              value={`item-${i}`}
-              className="rounded-2xl border border-kn-blue/10 bg-white px-5 data-[state=open]:border-kn-orange/25"
-            >
-              <AccordionTrigger className="py-5 text-left font-display text-base font-semibold text-kn-blue hover:no-underline">
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="pb-5 text-[15px] leading-relaxed text-kn-blue/60">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
+        <Accordion type="single" collapsible className="mt-12">
+          <RevealGroup className="flex flex-col gap-3" stagger={0.06}>
+            {faqs.map((faq, i) => (
+              <RevealItem key={i} as="div">
+                <AccordionItem
+                  value={`item-${i}`}
+                  className="rounded-2xl border border-kn-blue/10 bg-white px-5 transition-colors duration-300 data-[state=open]:border-kn-orange/25"
+                >
+                  <AccordionTrigger className="py-5 text-left font-display text-base font-semibold text-kn-blue hover:no-underline">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-5 text-[15px] leading-relaxed text-kn-blue/60">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              </RevealItem>
+            ))}
+          </RevealGroup>
         </Accordion>
       </div>
     </section>

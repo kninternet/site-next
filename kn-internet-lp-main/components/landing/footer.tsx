@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Instagram, Facebook, MessageCircle } from 'lucide-react'
+import { FooterFiber } from '@/components/motion/fiber'
 
 const columns = [
   {
@@ -27,8 +28,12 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="bg-kn-blue">
-      <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+    <footer className="relative overflow-hidden bg-kn-blue">
+      {/* Closing fiber path: descends from the top-right and ends inside the
+          KN logo area (bottom-left), closing the storytelling from the hero. */}
+      <FooterFiber className="pointer-events-none absolute inset-x-0 top-0 h-44" />
+
+      <div className="relative mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
           {/* Brand */}
           <div>

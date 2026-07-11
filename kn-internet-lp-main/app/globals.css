@@ -127,3 +127,28 @@
 
 /* ── Selection ── */
 ::selection { background: rgba(249,115,22,0.25); color: var(--kn-blue); }
+
+/* Travelling light bead that runs along a fiber path (scales with the SVG). */
+@keyframes fiber-bead {
+  from { stroke-dashoffset: var(--bead-length, 600); }
+  to   { stroke-dashoffset: 0; }
+}
+
+.fiber-bead {
+  animation: fiber-bead var(--bead-duration, 4s) linear infinite;
+  animation-delay: var(--bead-delay, 0s);
+  will-change: stroke-dashoffset;
+}
+
+/* Reduced motion: keep everything calm and still. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .fiber-bead { display: none; }
+}

@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Menu, X, MapPin, ChevronRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { useModal } from '@/components/coverage-modal-provider'
 
 const navItems = [
-  { href: '/cobertura', label: 'Cobertura' },
   { href: '/#diferenciais', label: 'Diferenciais' },
   { href: '/#como-funciona', label: 'Como funciona' },
   { href: '/#autoatendimento', label: 'Suporte' },
@@ -16,6 +16,7 @@ const navItems = [
 export function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { openModal } = useModal()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -34,6 +35,7 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <nav className="flex items-center justify-between h-16 lg:h-[72px]">
+
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0" aria-label="KN Internet — início">
             <Image
@@ -70,13 +72,11 @@ export function Header() {
               <Link href="/#autoatendimento">Central do Assinante</Link>
             </Button>
             <Button
-              asChild
-              className="bg-kn-orange hover:bg-kn-orange-dark text-white font-semibold rounded-lg shadow-sm shadow-kn-orange/20 transition-colors"
+              onClick={openModal}
+              className="bg-kn-orange hover:bg-kn-orange/90 text-white font-semibold rounded-lg shadow-sm shadow-kn-orange/20 transition-colors"
             >
-              <Link href="/cobertura">
-                <MapPin className="w-4 h-4" />
-                Verificar cobertura
-              </Link>
+              <MapPin className="w-4 h-4" />
+              Verificar cobertura
             </Button>
           </div>
 
@@ -118,14 +118,11 @@ export function Header() {
                 <Link href="/#autoatendimento">Central do Assinante</Link>
               </Button>
               <Button
-                asChild
-                className="w-full bg-kn-orange hover:bg-kn-orange-dark text-white font-semibold rounded-xl"
-                onClick={() => setOpen(false)}
+                onClick={() => { openModal(); setOpen(false) }}
+                className="w-full bg-kn-orange hover:bg-kn-orange/90 text-white font-semibold rounded-xl"
               >
-                <Link href="/cobertura">
-                  <MapPin className="w-4 h-4" />
-                  Verificar cobertura
-                </Link>
+                <MapPin className="w-4 h-4" />
+                Verificar cobertura
               </Button>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { Zap, HeartHandshake, Network, FileCheck } from 'lucide-react'
+import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 
 const features = [
   {
@@ -27,7 +28,7 @@ export function WhyKN() {
   return (
     <section id="diferenciais" className="scroll-mt-24 bg-white py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-balance font-display text-3xl font-extrabold tracking-tight text-kn-blue sm:text-4xl">
             Por que escolher a KN?
           </h2>
@@ -35,22 +36,22 @@ export function WhyKN() {
             Mais do que velocidade. Nossa prioridade é entregar estabilidade, atendimento
             e uma experiência simples para nossos clientes.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2">
+        <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2">
           {features.map(({ icon: Icon, title, text }) => (
-            <div
+            <RevealItem
               key={title}
-              className="group rounded-3xl border border-kn-blue/8 bg-kn-blue/[0.015] p-8 transition-colors hover:border-kn-orange/25 hover:bg-orange-50/30"
+              className="group rounded-3xl border border-kn-blue/8 bg-kn-blue/[0.015] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-kn-orange/25 hover:bg-orange-50/30 hover:shadow-xl hover:shadow-kn-blue/5"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-kn-blue/[0.06] transition-colors group-hover:bg-kn-orange/10">
-                <Icon className="h-6 w-6 text-kn-blue transition-colors group-hover:text-kn-orange" />
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-kn-blue/[0.06] transition-colors duration-300 group-hover:bg-kn-orange/10">
+                <Icon className="h-6 w-6 text-kn-blue transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-kn-orange" />
               </span>
               <h3 className="mt-5 font-display text-xl font-bold text-kn-blue">{title}</h3>
               <p className="mt-2 leading-relaxed text-kn-blue/60">{text}</p>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   )

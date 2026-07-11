@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Sora } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/landing/header'
+import { CoverageModalProvider } from '@/components/coverage-modal-provider'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -58,8 +59,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth bg-white">
       <body className={`${inter.variable} ${sora.variable} font-sans antialiased`}>
-        <Header />
-        {children}
+        <CoverageModalProvider>
+          <Header />
+          {children}
+        </CoverageModalProvider>
       </body>
     </html>
   )

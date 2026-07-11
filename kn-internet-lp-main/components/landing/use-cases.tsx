@@ -1,4 +1,5 @@
 import { Film, Trophy, Gamepad2, Briefcase, GraduationCap, Video } from 'lucide-react'
+import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 
 const cases = [
   { icon: Film, title: 'Filmes e Séries', text: 'Streaming em 4K sem travar, em vários aparelhos ao mesmo tempo.' },
@@ -13,29 +14,29 @@ export function UseCases() {
   return (
     <section className="bg-white py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-balance font-display text-3xl font-extrabold tracking-tight text-kn-blue sm:text-4xl">
             Internet para todos os momentos.
           </h2>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-kn-blue/60">
             Uma conexão estável que acompanha a rotina de toda a família.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cases.map(({ icon: Icon, title, text }) => (
-            <div
+            <RevealItem
               key={title}
-              className="group rounded-3xl border border-kn-blue/8 bg-white p-7 transition-all hover:-translate-y-1 hover:border-kn-orange/25 hover:shadow-xl hover:shadow-kn-blue/5"
+              className="group rounded-3xl border border-kn-blue/8 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-kn-orange/25 hover:shadow-xl hover:shadow-kn-blue/5"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-kn-blue/[0.06] transition-colors group-hover:bg-kn-orange/10">
-                <Icon className="h-6 w-6 text-kn-blue transition-colors group-hover:text-kn-orange" />
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-kn-blue/[0.06] transition-colors duration-300 group-hover:bg-kn-orange/10">
+                <Icon className="h-6 w-6 text-kn-blue transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-kn-orange" />
               </span>
               <h3 className="mt-5 font-display text-lg font-bold text-kn-blue">{title}</h3>
               <p className="mt-2 leading-relaxed text-kn-blue/60">{text}</p>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   )
