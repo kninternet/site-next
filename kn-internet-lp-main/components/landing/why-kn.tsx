@@ -1,27 +1,26 @@
 'use client'
 
-import { Zap, HeartHandshake, Network, FileCheck } from 'lucide-react'
-import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 import { useEffect, useState } from 'react'
+import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
 
 const features = [
   {
-    icon: Zap,
+    img: 'https://images.unsplash.com/photo-1593359677879-a4bb92f4834a?w=600&q=80',
     title: 'Instalação rápida',
     text: 'Agendamos sua instalação em poucos dias, com técnicos da região.',
   },
   {
-    icon: HeartHandshake,
+    img: 'https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=600&q=80',
     title: 'Atendimento de verdade',
     text: 'Você fala com pessoas. Sem robôs, sem burocracia e sem espera infinita.',
   },
   {
-    icon: Network,
+    img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80',
     title: 'Rede própria',
     text: 'Infraestrutura própria de fibra óptica que garante muito mais estabilidade.',
   },
   {
-    icon: FileCheck,
+    img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80',
     title: 'Transparência',
     text: 'Sem letras miúdas e sem surpresas na fatura. Tudo claro desde o início.',
   },
@@ -65,31 +64,44 @@ export function WhyKN() {
   return (
     <section id="diferenciais" className="scroll-mt-24 bg-white py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        <Reveal className="mx-auto max-w-2xl text-center">
+
+        <Reveal className="mx-auto max-w-3xl text-center">
           <h2 className="text-balance font-display text-3xl font-extrabold tracking-tight text-kn-blue sm:text-4xl">
             O que faz da KN a melhor internet{' '}
-            <span
-              className={`text-kn-orange transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`}
-            >
+            <span className={`text-kn-orange transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`}>
               {cidades[cidadeIdx]}?
             </span>
           </h2>
+          <p className="mt-6 text-pretty text-lg leading-relaxed text-kn-blue/60">
+            Acreditamos que tempo é o bem mais valioso. Por isso, a KN Internet tem como
+            prioridade o respeito ao seu tempo. Hoje, menos de 5% das instalações
+            ultrapassam 24h. No suporte, nossa IA resolve a maioria das necessidades em
+            minutos — e sempre com um atendente humano avaliando cada conversa, pronto
+            para agir quando necessário.
+          </p>
         </Reveal>
 
         <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2">
-          {features.map(({ icon: Icon, title, text }) => (
+          {features.map(({ img, title, text }) => (
             <RevealItem
               key={title}
-              className="group rounded-3xl border border-kn-blue/8 bg-kn-blue/[0.015] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-kn-orange/25 hover:bg-orange-50/30 hover:shadow-xl hover:shadow-kn-blue/5"
+              className="group overflow-hidden rounded-3xl border border-kn-blue/8 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-kn-blue/10"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-kn-blue/[0.06] transition-colors duration-300 group-hover:bg-kn-orange/10">
-                <Icon className="h-6 w-6 text-kn-blue transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-kn-orange" />
-              </span>
-              <h3 className="mt-5 font-display text-xl font-bold text-kn-blue">{title}</h3>
-              <p className="mt-2 leading-relaxed text-kn-blue/60">{text}</p>
+              <div className="h-48 w-full overflow-hidden">
+                <img
+                  src={img}
+                  alt={title}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="font-display text-xl font-bold text-kn-blue">{title}</h3>
+                <p className="mt-2 leading-relaxed text-kn-blue/60">{text}</p>
+              </div>
             </RevealItem>
           ))}
         </RevealGroup>
+
       </div>
     </section>
   )
