@@ -27,16 +27,39 @@ const features = [
   },
 ]
 
+const cidades = [
+  'do Rio de Janeiro',
+  'de São Gonçalo',
+  'de Duque de Caxias',
+  'de Queimados',
+]
+
 export function WhyKN() {
-  const [cidade, setCidade] = useState('do Rio de Janeiro')
+  const [cidadeIdx, setCidadeIdx] = useState(0)
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
     fetch('https://ip-api.com/json/?fields=city&lang=pt-BR')
       .then((r) => r.json())
       .then((data) => {
-        if (data?.city) setCidade(`de ${data.city}`)
+        if (data?.city) {
+          const idx = cidades.findIndex(c =>
+            c.toLowerCase().includes(data.city.toLowerCase())
+          )
+          if (idx >= 0) setCidadeIdx(idx)
+        }
       })
       .catch(() => {})
+
+    const timer = setInterval(() => {
+      setVisible(false)
+      setTimeout(() => {
+        setCidadeIdx((i) => (i + 1) % cidades.length)
+        setVisible(true)
+      }, 300)
+    }, 3000)
+
+    return () => clearInterval(timer)
   }, [])
 
   return (
@@ -45,7 +68,11 @@ export function WhyKN() {
         <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-balance font-display text-3xl font-extrabold tracking-tight text-kn-blue sm:text-4xl">
             O que faz da KN a melhor internet{' '}
-            <span className="text-kn-orange">{cidade}?</span>
+            <span
+              className={`text-kn-orange transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`}
+            >
+              {cidades[cidadeIdx]}?
+            </span>
           </h2>
         </Reveal>
 
