@@ -128,6 +128,7 @@ export function Header() {
           </div>
         )}
       </div>
+      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-kn-blue/40 shadow-sm" />
     </header>
   )
 }

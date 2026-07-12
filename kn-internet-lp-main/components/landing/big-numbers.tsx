@@ -23,7 +23,7 @@ export function BigNumbers() {
             Números que constroem confiança.
           </h2>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-white/60">
-            Uma operação sólida, monitorada 24 horas por dia para manter você sempre conectado.
+            Com infraestrutura 100%, as bases para consultas no sistema podiam intergar tudo, embaladinho na escola 
           </p>
         </Reveal>
 

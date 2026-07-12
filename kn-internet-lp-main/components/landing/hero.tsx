@@ -124,16 +124,6 @@ export function Hero() {
           </Button>
         </motion.form>
 
-        <motion.div custom={6} variants={rise} initial="hidden" animate="visible"
-          className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3">
-          {diferenciais.map((d) => (
-            <div key={d.label} className="flex items-center gap-2 text-sm font-medium text-kn-blue/60">
-              <d.icon className="h-4 w-4 text-kn-orange shrink-0" />
-              {d.label}
-            </div>
-          ))}
-        </motion.div>
-
       </div>
     </section>
   )

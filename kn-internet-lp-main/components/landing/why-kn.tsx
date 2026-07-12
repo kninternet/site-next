@@ -1,5 +1,8 @@
+'use client'
+
 import { Zap, HeartHandshake, Network, FileCheck } from 'lucide-react'
 import { Reveal, RevealGroup, RevealItem } from '@/components/motion/reveal'
+import { useEffect, useState } from 'react'
 
 const features = [
   {
@@ -25,17 +28,25 @@ const features = [
 ]
 
 export function WhyKN() {
+  const [cidade, setCidade] = useState('do Rio de Janeiro')
+
+  useEffect(() => {
+    fetch('https://ip-api.com/json/?fields=city&lang=pt-BR')
+      .then((r) => r.json())
+      .then((data) => {
+        if (data?.city) setCidade(`de ${data.city}`)
+      })
+      .catch(() => {})
+  }, [])
+
   return (
     <section id="diferenciais" className="scroll-mt-24 bg-white py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-balance font-display text-3xl font-extrabold tracking-tight text-kn-blue sm:text-4xl">
-            Por que escolher a KN?
+            O que faz da KN a melhor internet{' '}
+            <span className="text-kn-orange">{cidade}?</span>
           </h2>
-          <p className="mt-4 text-pretty text-lg leading-relaxed text-kn-blue/60">
-            Mais do que velocidade. Nossa prioridade é entregar estabilidade, atendimento
-            e uma experiência simples para nossos clientes.
-          </p>
         </Reveal>
 
         <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2">
