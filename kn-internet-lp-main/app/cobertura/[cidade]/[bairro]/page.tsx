@@ -157,7 +157,7 @@ export default async function BairroPage({
 
         {/* Nota taxa instalação */}
         <p className="text-center text-sm text-kn-blue/40">
-          Taxa de instalação: R$150,00 via PIX · Equipamentos inclusos
+          Taxa de instalação: R${bairro.taxaInstalacao.toFixed(2).replace('.', ',')} via PIX · Equipamentos inclusos
         </p>
 
       </div>
