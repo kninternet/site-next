@@ -38,6 +38,7 @@ export interface Cidade {
 
 export const NAS_PADRAO = 'BNG-ACCELPPP-VYOS-GEN11'
 export const VENCIMENTOS_PADRAO: Vencimento[] = [5, 20]
+export const VENCIMENTOS = VENCIMENTOS_PADRAO // alias mantido por compatibilidade com contratar.tsx
 export const VENCIMENTOS_COVANCA: Vencimento[] = [5, 10, 15, 20]
 export const VENCIMENTOS_TRIBOBO: Vencimento[] = [5, 10, 15]
 
