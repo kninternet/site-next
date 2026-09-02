@@ -1,11 +1,11 @@
 // lib/coverage-data.ts
 // Fonte única de verdade — cobertura, planos, slugs e mapeamento SGP
-// Atualizado em 06/07/2026 — adiciona planoSgpId (id numérico canônico do SGP)
-// alinhado com o PLANO_MAP de lib/data.ts (pré-cadastro)
+// Atualizado — alinhado com lib/data.ts do pré-cadastro (Covanca RJ, Tribobó SG,
+// remoção de Duque de Caxias, Queimados e Vila Santa Clara)
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
-export type Vencimento = 5 | 20
+export type Vencimento = 5 | 10 | 15 | 20
 
 export interface Plano {
   id: string
@@ -23,6 +23,8 @@ export interface Bairro {
   popId: number
   portadorId: number
   nasId: string
+  vencimentos: Vencimento[]
+  taxaInstalacao: number
   planos: Plano[]
 }
 
@@ -35,7 +37,13 @@ export interface Cidade {
 // ─── Constantes SGP ───────────────────────────────────────────────────────────
 
 export const NAS_PADRAO = 'BNG-ACCELPPP-VYOS-GEN11'
-export const VENCIMENTOS: Vencimento[] = [5, 20]
+export const VENCIMENTOS_PADRAO: Vencimento[] = [5, 20]
+export const VENCIMENTOS_COVANCA: Vencimento[] = [5, 10, 15, 20]
+export const VENCIMENTOS_TRIBOBO: Vencimento[] = [5, 10, 15]
+
+export const TAXA_INSTALACAO_PADRAO = 150.00
+export const TAXA_INSTALACAO_COVANCA = 160.00
+export const TAXA_INSTALACAO_TRIBOBO = 160.00
 
 // ─── Planos por área ──────────────────────────────────────────────────────────
 
@@ -186,111 +194,83 @@ const planosCavalcante: Plano[] = [
   },
 ]
 
-const planosVilaSantaClara: Plano[] = [
+// Região Covanca (POP 42) — Tanque, Jacarepaguá, Pechincha, Taquara, Freguesia, Praça Seca
+const planosCovanca: Plano[] = [
   {
-    id: 'rj-vsc-100',
-    nome: '100 Mega',
-    velocidade: 100,
-    preco: 79.90,
-    destaque: false,
-    recursos: ['Download até 100 Mbps', 'Upload até 50 Mbps', 'Wi-Fi incluso', 'Suporte local'],
-    planoSgpId: 212,
-  },
-  {
-    id: 'rj-vsc-500',
-    nome: '500 Mega',
-    velocidade: 500,
-    preco: 99.90,
-    destaque: true,
-    recursos: ['Download até 500 Mbps', 'Upload até 250 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
-    planoSgpId: 213,
-  },
-  {
-    id: 'rj-vsc-800',
-    nome: '800 Mega',
-    velocidade: 800,
-    preco: 149.90,
-    destaque: false,
-    recursos: ['Download até 800 Mbps', 'Upload até 400 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
-    planoSgpId: 214,
-  },
-]
-
-const planosQueimados: Plano[] = [
-  {
-    id: 'que-300',
+    id: 'cov-300',
     nome: '300 Mega',
     velocidade: 300,
-    preco: 100.00,
+    preco: 120.00,
     destaque: false,
     recursos: ['Download até 300 Mbps', 'Upload até 150 Mbps', 'Wi-Fi incluso', 'Suporte local'],
-    planoSgpId: 1243,
+    planoSgpId: 101312,
   },
   {
-    id: 'que-500',
+    id: 'cov-500',
     nome: '500 Mega',
     velocidade: 500,
-    preco: 120.00,
+    preco: 140.00,
     destaque: true,
     recursos: ['Download até 500 Mbps', 'Upload até 250 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
-    planoSgpId: 1244,
+    planoSgpId: 1248,
   },
   {
-    id: 'que-600',
+    id: 'cov-600',
     nome: '600 Mega',
     velocidade: 600,
-    preco: 150.00,
+    preco: 160.00,
     destaque: false,
     recursos: ['Download até 600 Mbps', 'Upload até 300 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
-    planoSgpId: 1245,
+    planoSgpId: 1249,
   },
   {
-    id: 'que-800',
+    id: 'cov-800',
     nome: '800 Mega',
     velocidade: 800,
     preco: 180.00,
     destaque: false,
     recursos: ['Download até 800 Mbps', 'Upload até 400 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
-    planoSgpId: 1246,
+    planoSgpId: 1250,
   },
 ]
 
-const planosDuqueDeCaxias: Plano[] = [
+// Região Tribobó (POP 100071 — Nova Grécia/Lacomba no SGP), São Gonçalo
+const planosTribobo: Plano[] = [
   {
-    id: 'dc-400',
-    nome: '400 Mega',
-    velocidade: 400,
+    id: 'trb-100',
+    nome: '100 Mega',
+    velocidade: 100,
     preco: 120.00,
     destaque: false,
-    recursos: ['Download até 400 Mbps', 'Upload até 220 Mbps', 'Wi-Fi incluso', 'Suporte local'],
-    planoSgpId: 228,
+    recursos: ['Download até 100 Mbps', 'Upload até 50 Mbps', 'Wi-Fi incluso', 'Suporte local'],
+    planoSgpId: 101315,
   },
   {
-    id: 'dc-500',
-    nome: '500 Mega',
-    velocidade: 500,
+    id: 'trb-200',
+    nome: '200 Mega',
+    velocidade: 200,
     preco: 150.00,
     destaque: true,
-    recursos: ['Download até 500 Mbps', 'Upload até 250 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
-    planoSgpId: 229,
+    recursos: ['Download até 200 Mbps', 'Upload até 100 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 101316,
   },
   {
-    id: 'dc-600',
-    nome: '600 Mega',
-    velocidade: 600,
+    id: 'trb-300',
+    nome: '300 Mega',
+    velocidade: 300,
     preco: 170.00,
     destaque: false,
-    recursos: ['Download até 600 Mbps', 'Upload até 300 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
-    planoSgpId: 230,
+    recursos: ['Download até 300 Mbps', 'Upload até 150 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade no atendimento'],
+    planoSgpId: 101318,
   },
   {
-    id: 'dc-800',
-    nome: '800 Mega',
-    velocidade: 800,
+    id: 'trb-500',
+    nome: '500 Mega',
+    velocidade: 500,
     preco: 200.00,
     destaque: false,
-    recursos: ['Download até 800 Mbps', 'Upload até 400 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
-    planoSgpId: 231,
+    recursos: ['Download até 500 Mbps', 'Upload até 250 Mbps', 'Wi-Fi incluso', 'Suporte local', 'Prioridade máxima'],
+    planoSgpId: 101319,
   },
 ]
 
@@ -307,6 +287,8 @@ export const CIDADES: Cidade[] = [
         popId: 1,
         portadorId: 32,
         nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_PADRAO,
+        taxaInstalacao: TAXA_INSTALACAO_PADRAO,
         planos: planosSaoGoncalo,
       },
       {
@@ -315,6 +297,8 @@ export const CIDADES: Cidade[] = [
         popId: 1,
         portadorId: 32,
         nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_PADRAO,
+        taxaInstalacao: TAXA_INSTALACAO_PADRAO,
         planos: planosSaoGoncalo,
       },
       {
@@ -323,14 +307,18 @@ export const CIDADES: Cidade[] = [
         popId: 1,
         portadorId: 32,
         nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_PADRAO,
+        taxaInstalacao: TAXA_INSTALACAO_PADRAO,
         planos: planosSaoGoncalo,
       },
       {
         nome: 'Covanca',
-        slug: 'covanca',
+        slug: 'covanca-sg',
         popId: 1,
         portadorId: 32,
         nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_PADRAO,
+        taxaInstalacao: TAXA_INSTALACAO_PADRAO,
         planos: planosSaoGoncalo,
       },
       {
@@ -339,7 +327,19 @@ export const CIDADES: Cidade[] = [
         popId: 1,
         portadorId: 32,
         nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_PADRAO,
+        taxaInstalacao: TAXA_INSTALACAO_PADRAO,
         planos: planosSaoGoncalo,
+      },
+      {
+        nome: 'Tribobó',
+        slug: 'tribobo',
+        popId: 100071,
+        portadorId: 100041,
+        nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_TRIBOBO,
+        taxaInstalacao: TAXA_INSTALACAO_TRIBOBO,
+        planos: planosTribobo,
       },
     ],
   },
@@ -353,6 +353,8 @@ export const CIDADES: Cidade[] = [
         popId: 31,
         portadorId: 30,
         nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_PADRAO,
+        taxaInstalacao: TAXA_INSTALACAO_PADRAO,
         planos: planosCaju,
       },
       {
@@ -361,6 +363,8 @@ export const CIDADES: Cidade[] = [
         popId: 31,
         portadorId: 30,
         nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_PADRAO,
+        taxaInstalacao: TAXA_INSTALACAO_PADRAO,
         planos: planosSantoCristo,
       },
       {
@@ -369,59 +373,69 @@ export const CIDADES: Cidade[] = [
         popId: 31,
         portadorId: 30,
         nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_PADRAO,
+        taxaInstalacao: TAXA_INSTALACAO_PADRAO,
         planos: planosCavalcante,
       },
       {
-        nome: 'Vila Santa Clara (Taquara)',
-        slug: 'vila-santa-clara',
-        popId: 31,
+        nome: 'Tanque',
+        slug: 'tanque',
+        popId: 42,
         portadorId: 30,
         nasId: NAS_PADRAO,
-        planos: planosVilaSantaClara,
-      },
-    ],
-  },
-  {
-    nome: 'Queimados',
-    slug: 'queimados',
-    bairros: [
-      {
-        nome: 'Queimados',
-        slug: 'queimados',
-        popId: 39,
-        portadorId: 34,
-        nasId: NAS_PADRAO,
-        planos: planosQueimados,
-      },
-    ],
-  },
-  {
-    nome: 'Duque de Caxias',
-    slug: 'duque-de-caxias',
-    bairros: [
-      {
-        nome: 'Cangulo',
-        slug: 'cangulo',
-        popId: 38,
-        portadorId: 33,
-        nasId: NAS_PADRAO,
-        planos: planosDuqueDeCaxias,
+        vencimentos: VENCIMENTOS_COVANCA,
+        taxaInstalacao: TAXA_INSTALACAO_COVANCA,
+        planos: planosCovanca,
       },
       {
-        nome: 'Jardim Rosário',
-        slug: 'jardim-rosario',
-        popId: 38,
-        portadorId: 33,
+        nome: 'Jacarepaguá',
+        slug: 'jacarepagua',
+        popId: 42,
+        portadorId: 30,
         nasId: NAS_PADRAO,
-        planos: planosDuqueDeCaxias,
+        vencimentos: VENCIMENTOS_COVANCA,
+        taxaInstalacao: TAXA_INSTALACAO_COVANCA,
+        planos: planosCovanca,
       },
       {
-        nome: 'Saracuruna',
-        slug: 'saracuruna',
-        popId: 38,
-        portadorId: 33,
+        nome: 'Pechincha',
+        slug: 'pechincha',
+        popId: 42,
+        portadorId: 30,
         nasId: NAS_PADRAO,
-        planos: planosDuqueDeCaxias,
+        vencimentos: VENCIMENTOS_COVANCA,
+        taxaInstalacao: TAXA_INSTALACAO_COVANCA,
+        planos: planosCovanca,
+      },
+      {
+        nome: 'Taquara',
+        slug: 'taquara',
+        popId: 42,
+        portadorId: 30,
+        nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_COVANCA,
+        taxaInstalacao: TAXA_INSTALACAO_COVANCA,
+        planos: planosCovanca,
+      },
+      {
+        nome: 'Freguesia',
+        slug: 'freguesia',
+        popId: 42,
+        portadorId: 30,
+        nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_COVANCA,
+        taxaInstalacao: TAXA_INSTALACAO_COVANCA,
+        planos: planosCovanca,
+      },
+      {
+        nome: 'Praça Seca',
+        slug: 'praca-seca',
+        popId: 42,
+        portadorId: 30,
+        nasId: NAS_PADRAO,
+        vencimentos: VENCIMENTOS_COVANCA,
+        taxaInstalacao: TAXA_INSTALACAO_COVANCA,
+        planos: planosCovanca,
       },
     ],
   },

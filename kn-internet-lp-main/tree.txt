@@ -1,0 +1,226 @@
+.
+├── app
+│   ├── api
+│   │   └── waitlist
+│   │       └── route.ts
+│   ├── cobertura
+│   │   ├── [cidade]
+│   │   │   ├── [bairro]
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   └── page.tsx
+│   ├── contratar
+│   │   └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── build.sh
+├── components
+│   ├── consent-checkbox.tsx
+│   ├── contratar
+│   │   └── contratar.tsx
+│   ├── coverage-modal-provider.tsx
+│   ├── coverage-modal.tsx
+│   ├── landing
+│   │   ├── app-section.tsx
+│   │   ├── big-numbers.tsx
+│   │   ├── comparison.tsx
+│   │   ├── coverage.tsx
+│   │   ├── differentials-bar.tsx
+│   │   ├── faq.tsx
+│   │   ├── final-cta.tsx
+│   │   ├── footer.tsx
+│   │   ├── header.tsx
+│   │   ├── hero-backdrop.tsx
+│   │   ├── hero.tsx
+│   │   ├── how-it-works.tsx
+│   │   ├── self-service.tsx
+│   │   ├── testimonials.tsx
+│   │   ├── use-cases.tsx
+│   │   └── why-kn.tsx
+│   ├── motion
+│   │   ├── count-up.tsx
+│   │   ├── fiber.tsx
+│   │   └── reveal.tsx
+│   ├── theme-provider.tsx
+│   └── ui
+│       ├── accordion.tsx
+│       ├── alert-dialog.tsx
+│       ├── alert.tsx
+│       ├── aspect-ratio.tsx
+│       ├── avatar.tsx
+│       ├── badge.tsx
+│       ├── breadcrumb.tsx
+│       ├── button-group.tsx
+│       ├── button.tsx
+│       ├── calendar.tsx
+│       ├── card.tsx
+│       ├── carousel.tsx
+│       ├── chart.tsx
+│       ├── checkbox.tsx
+│       ├── collapsible.tsx
+│       ├── command.tsx
+│       ├── context-menu.tsx
+│       ├── dialog.tsx
+│       ├── drawer.tsx
+│       ├── dropdown-menu.tsx
+│       ├── empty.tsx
+│       ├── field.tsx
+│       ├── form.tsx
+│       ├── hover-card.tsx
+│       ├── input-group.tsx
+│       ├── input-otp.tsx
+│       ├── input.tsx
+│       ├── item.tsx
+│       ├── kbd.tsx
+│       ├── label.tsx
+│       ├── menubar.tsx
+│       ├── navigation-menu.tsx
+│       ├── pagination.tsx
+│       ├── popover.tsx
+│       ├── progress.tsx
+│       ├── radio-group.tsx
+│       ├── resizable.tsx
+│       ├── scroll-area.tsx
+│       ├── select.tsx
+│       ├── separator.tsx
+│       ├── sheet.tsx
+│       ├── sidebar.tsx
+│       ├── skeleton.tsx
+│       ├── slider.tsx
+│       ├── sonner.tsx
+│       ├── spinner.tsx
+│       ├── switch.tsx
+│       ├── table.tsx
+│       ├── tabs.tsx
+│       ├── textarea.tsx
+│       ├── toaster.tsx
+│       ├── toast.tsx
+│       ├── toggle-group.tsx
+│       ├── toggle.tsx
+│       ├── tooltip.tsx
+│       ├── use-mobile.tsx
+│       └── use-toast.ts
+├── components.json
+├── ecosystem.config.js
+├── hooks
+│   ├── use-mobile.ts
+│   └── use-toast.ts
+├── lib
+│   ├── coverage-data.ts
+│   ├── coverage-lookup.ts
+│   ├── db.ts
+│   ├── mailer.ts
+│   └── utils.ts
+├── next.config.mjs
+├── next-env.d.ts
+├── node_modules
+│   ├── autoprefixer -> .pnpm/autoprefixer@10.5.0_postcss@8.5.14/node_modules/autoprefixer
+│   ├── class-variance-authority -> .pnpm/class-variance-authority@0.7.1/node_modules/class-variance-authority
+│   ├── clsx -> .pnpm/clsx@2.1.1/node_modules/clsx
+│   ├── cmdk -> .pnpm/cmdk@1.1.1_@types+react-dom@19.2.3_@types+react@19.2.14__@types+react@19.2.14_react-dom_3d47b27abe92d75583fac7218a36b921/node_modules/cmdk
+│   ├── date-fns -> .pnpm/date-fns@4.1.0/node_modules/date-fns
+│   ├── embla-carousel-react -> .pnpm/embla-carousel-react@8.6.0_react@19.2.5/node_modules/embla-carousel-react
+│   ├── framer-motion -> .pnpm/framer-motion@12.42.2_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/framer-motion
+│   ├── @hookform
+│   │   └── resolvers -> ../.pnpm/@hookform+resolvers@3.10.0_react-hook-form@7.75.0_react@19.2.5_/node_modules/@hookform/resolvers
+│   ├── input-otp -> .pnpm/input-otp@1.4.2_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/input-otp
+│   ├── lucide-react -> .pnpm/lucide-react@0.564.0_react@19.2.5/node_modules/lucide-react
+│   ├── next -> .pnpm/next@16.2.4_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next
+│   ├── next-themes -> .pnpm/next-themes@0.4.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next-themes
+│   ├── nodemailer -> .pnpm/nodemailer@9.0.3/node_modules/nodemailer
+│   ├── pg -> .pnpm/pg@8.22.0/node_modules/pg
+│   ├── postcss -> .pnpm/postcss@8.5.14/node_modules/postcss
+│   ├── @radix-ui
+│   │   ├── react-accordion -> ../.pnpm/@radix-ui+react-accordion@1.2.12_@types+react-dom@19.2.3_@types+react@19.2.14__@types+r_4d82d747906d1c9adf9f86c8f2f71923/node_modules/@radix-ui/react-accordion
+│   │   ├── react-alert-dialog -> ../.pnpm/@radix-ui+react-alert-dialog@1.1.15_@types+react-dom@19.2.3_@types+react@19.2.14__@type_6e0a7cb35458ca16bb65361e77642bec/node_modules/@radix-ui/react-alert-dialog
+│   │   ├── react-aspect-ratio -> ../.pnpm/@radix-ui+react-aspect-ratio@1.1.8_@types+react-dom@19.2.3_@types+react@19.2.14__@types_752756f111b18a2192c58884781917f0/node_modules/@radix-ui/react-aspect-ratio
+│   │   ├── react-avatar -> ../.pnpm/@radix-ui+react-avatar@1.1.11_@types+react-dom@19.2.3_@types+react@19.2.14__@types+reac_44c0fb43cba95535c58007e8df65a3a2/node_modules/@radix-ui/react-avatar
+│   │   ├── react-checkbox -> ../.pnpm/@radix-ui+react-checkbox@1.3.3_@types+react-dom@19.2.3_@types+react@19.2.14__@types+rea_5d08deedc0c6fcbbf88ad155a4d8991e/node_modules/@radix-ui/react-checkbox
+│   │   ├── react-collapsible -> ../.pnpm/@radix-ui+react-collapsible@1.1.12_@types+react-dom@19.2.3_@types+react@19.2.14__@types_c02f84d67beea925c4d01ad3e6946c7c/node_modules/@radix-ui/react-collapsible
+│   │   ├── react-context-menu -> ../.pnpm/@radix-ui+react-context-menu@2.2.16_@types+react-dom@19.2.3_@types+react@19.2.14__@type_be1e2985a22f26e47341d286ae2fa1c9/node_modules/@radix-ui/react-context-menu
+│   │   ├── react-dialog -> ../.pnpm/@radix-ui+react-dialog@1.1.15_@types+react-dom@19.2.3_@types+react@19.2.14__@types+reac_2bb6e144a4a4887664c34982a66175eb/node_modules/@radix-ui/react-dialog
+│   │   ├── react-dropdown-menu -> ../.pnpm/@radix-ui+react-dropdown-menu@2.1.16_@types+react-dom@19.2.3_@types+react@19.2.14__@typ_d9fe3466f9115142c8c659988aaf6f97/node_modules/@radix-ui/react-dropdown-menu
+│   │   ├── react-hover-card -> ../.pnpm/@radix-ui+react-hover-card@1.1.15_@types+react-dom@19.2.3_@types+react@19.2.14__@types+_810192adf971fea3822565b2cbd033e0/node_modules/@radix-ui/react-hover-card
+│   │   ├── react-label -> ../.pnpm/@radix-ui+react-label@2.1.8_@types+react-dom@19.2.3_@types+react@19.2.14__@types+react@_cbb1723b2e583f39174fd1f4a67731dd/node_modules/@radix-ui/react-label
+│   │   ├── react-menubar -> ../.pnpm/@radix-ui+react-menubar@1.1.16_@types+react-dom@19.2.3_@types+react@19.2.14__@types+rea_7d7a17788d4f077a66957405c3dbdcd9/node_modules/@radix-ui/react-menubar
+│   │   ├── react-navigation-menu -> ../.pnpm/@radix-ui+react-navigation-menu@1.2.14_@types+react-dom@19.2.3_@types+react@19.2.14__@t_2e2634d5ee6b03c714acb5ee41529951/node_modules/@radix-ui/react-navigation-menu
+│   │   ├── react-popover -> ../.pnpm/@radix-ui+react-popover@1.1.15_@types+react-dom@19.2.3_@types+react@19.2.14__@types+rea_f1d1a58244a80c62b16bd608f9d928e5/node_modules/@radix-ui/react-popover
+│   │   ├── react-progress -> ../.pnpm/@radix-ui+react-progress@1.1.4_@types+react-dom@19.2.3_@types+react@19.2.14__@types+rea_a30ca9cba63cdc8c071fa7801eba932a/node_modules/@radix-ui/react-progress
+│   │   ├── react-radio-group -> ../.pnpm/@radix-ui+react-radio-group@1.3.8_@types+react-dom@19.2.3_@types+react@19.2.14__@types+_cd32cc5d3acab82c80f5f32482bb55d0/node_modules/@radix-ui/react-radio-group
+│   │   ├── react-scroll-area -> ../.pnpm/@radix-ui+react-scroll-area@1.2.10_@types+react-dom@19.2.3_@types+react@19.2.14__@types_9212dbb4854fc0df3bc51a9a380688e2/node_modules/@radix-ui/react-scroll-area
+│   │   ├── react-select -> ../.pnpm/@radix-ui+react-select@2.2.6_@types+react-dom@19.2.3_@types+react@19.2.14__@types+react_bb2c087fbe927e1f3c46e91de68a4ad7/node_modules/@radix-ui/react-select
+│   │   ├── react-separator -> ../.pnpm/@radix-ui+react-separator@1.1.8_@types+react-dom@19.2.3_@types+react@19.2.14__@types+re_33d28698c383d6cd36fb43983bf20d36/node_modules/@radix-ui/react-separator
+│   │   ├── react-slider -> ../.pnpm/@radix-ui+react-slider@1.3.6_@types+react-dom@19.2.3_@types+react@19.2.14__@types+react_bc6705c94abdae56af6b7d4e76cb8620/node_modules/@radix-ui/react-slider
+│   │   ├── react-slot -> ../.pnpm/@radix-ui+react-slot@1.2.4_@types+react@19.2.14_react@19.2.5/node_modules/@radix-ui/react-slot
+│   │   ├── react-switch -> ../.pnpm/@radix-ui+react-switch@1.2.6_@types+react-dom@19.2.3_@types+react@19.2.14__@types+react_7ca460f1f67ff8c5b086b59b47ac08b0/node_modules/@radix-ui/react-switch
+│   │   ├── react-tabs -> ../.pnpm/@radix-ui+react-tabs@1.1.13_@types+react-dom@19.2.3_@types+react@19.2.14__@types+react@_5e386818c1a7a76f48d01b1b7ff302b8/node_modules/@radix-ui/react-tabs
+│   │   ├── react-toast -> ../.pnpm/@radix-ui+react-toast@1.2.15_@types+react-dom@19.2.3_@types+react@19.2.14__@types+react_7849dc8055ccd79e7041ca0d07f50241/node_modules/@radix-ui/react-toast
+│   │   ├── react-toggle -> ../.pnpm/@radix-ui+react-toggle@1.1.10_@types+react-dom@19.2.3_@types+react@19.2.14__@types+reac_5aafffea7332d28773a4c35f8d29c0fc/node_modules/@radix-ui/react-toggle
+│   │   ├── react-toggle-group -> ../.pnpm/@radix-ui+react-toggle-group@1.1.11_@types+react-dom@19.2.3_@types+react@19.2.14__@type_fed8a0bacc2c1488680f0197ab4d1eba/node_modules/@radix-ui/react-toggle-group
+│   │   └── react-tooltip -> ../.pnpm/@radix-ui+react-tooltip@1.2.8_@types+react-dom@19.2.3_@types+react@19.2.14__@types+reac_4c45f64f49c2624f242574345c841a4e/node_modules/@radix-ui/react-tooltip
+│   ├── react -> .pnpm/react@19.2.5/node_modules/react
+│   ├── react-day-picker -> .pnpm/react-day-picker@9.13.2_react@19.2.5/node_modules/react-day-picker
+│   ├── react-dom -> .pnpm/react-dom@19.2.5_react@19.2.5/node_modules/react-dom
+│   ├── react-hook-form -> .pnpm/react-hook-form@7.75.0_react@19.2.5/node_modules/react-hook-form
+│   ├── react-resizable-panels -> .pnpm/react-resizable-panels@2.1.9_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/react-resizable-panels
+│   ├── recharts -> .pnpm/recharts@2.15.0_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/recharts
+│   ├── sharp -> .pnpm/sharp@0.34.5/node_modules/sharp
+│   ├── sonner -> .pnpm/sonner@1.7.4_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/sonner
+│   ├── @tailwindcss
+│   │   └── postcss -> ../.pnpm/@tailwindcss+postcss@4.2.4/node_modules/@tailwindcss/postcss
+│   ├── tailwindcss -> .pnpm/tailwindcss@4.2.4/node_modules/tailwindcss
+│   ├── tailwind-merge -> .pnpm/tailwind-merge@3.5.0/node_modules/tailwind-merge
+│   ├── tw-animate-css -> .pnpm/tw-animate-css@1.3.3/node_modules/tw-animate-css
+│   ├── @types
+│   │   ├── node -> ../.pnpm/@types+node@22.19.17/node_modules/@types/node
+│   │   ├── nodemailer -> ../.pnpm/@types+nodemailer@8.0.1/node_modules/@types/nodemailer
+│   │   ├── pg -> ../.pnpm/@types+pg@8.20.0/node_modules/@types/pg
+│   │   ├── react -> ../.pnpm/@types+react@19.2.14/node_modules/@types/react
+│   │   └── react-dom -> ../.pnpm/@types+react-dom@19.2.3_@types+react@19.2.14/node_modules/@types/react-dom
+│   ├── typescript -> .pnpm/typescript@5.7.3/node_modules/typescript
+│   ├── vaul -> .pnpm/vaul@1.1.2_@types+react-dom@19.2.3_@types+react@19.2.14__@types+react@19.2.14_react-dom_d9bfd38a4ee4f41de100e4d447baf4a5/node_modules/vaul
+│   ├── @vercel
+│   │   └── analytics -> ../.pnpm/@vercel+analytics@1.6.1_next@16.2.4_react-dom@19.2.5_react@19.2.5__react@19.2.5__react@19.2.5/node_modules/@vercel/analytics
+│   └── zod -> .pnpm/zod@3.25.76/node_modules/zod
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── postcss.config.mjs
+├── public
+│   ├── apple-icon.png
+│   ├── favicon.ico
+│   ├── icon-32x32.png
+│   ├── icon-512x512.png
+│   ├── icon-dark-32x32.png
+│   ├── icon-light-32x32.png
+│   ├── icon.svg
+│   ├── images
+│   │   ├── hero
+│   │   │   ├── couple.png
+│   │   │   ├── elderly-call.png
+│   │   │   ├── family-tv.png
+│   │   │   ├── gamer.png
+│   │   │   ├── remote-worker.png
+│   │   │   ├── stock-photo-african-american-student-girls-using-a-laptop-computer-black-people-328642646.webp
+│   │   │   ├── stock-photo-african-american-woman-sending-a-text-message-on-a-mobile-phone-black-people-328642871.webp
+│   │   │   ├── stock-photo-hispanic-boy-studying-at-home-distance-education-boy-doing-homework-with-books-and-digital-2459925701.webp
+│   │   │   ├── stock-photo-son-with-mother-look-at-cell-phone-screen-and-smile-in-home-room-2330740643.webp
+│   │   │   └── student.png
+│   │   ├── hero-bg.webp
+│   │   ├── kn-app-mockup.png
+│   │   ├── kn-logo.png
+│   │   ├── kn-logo-white.png
+│   │   ├── logo_kn_internet.png
+│   │   └── logo_kn_internet.webp
+│   ├── placeholder.jpg
+│   ├── placeholder-logo.png
+│   ├── placeholder-logo.svg
+│   ├── placeholder.svg
+│   └── placeholder-user.jpg
+├── README.md
+├── tree.txt
+├── tsconfig.json
+└── tsconfig.tsbuildinfo
+
+87 directories, 137 files
