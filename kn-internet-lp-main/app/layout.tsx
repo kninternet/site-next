@@ -3,6 +3,7 @@ import { Inter, Sora } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/landing/header'
 import { CoverageModalProvider } from '@/components/coverage-modal-provider'
+import { FluenzoWebchat } from '@/components/fluenzo-webchat'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -63,6 +64,7 @@ export default function RootLayout({
           <Header />
           {children}
         </CoverageModalProvider>
+        <FluenzoWebchat />
       </body>
     </html>
   )
